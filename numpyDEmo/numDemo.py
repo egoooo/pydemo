@@ -240,5 +240,85 @@ print(arr[1:2,1:3])
 #  取第一维的索引1到索引2之间的元素，也就是第二行
 # # 取第二维的索引1到索引3之间的元素，也就是第二列和第三列
 
+#随机抽样 (numpy.random)
+# rand(d0, d1, …, dn)	Random values in a given shape.
+# randn(d0, d1, …, dn)	Return a sample (or samples) from the “standard normal” distribution.
+# randint(low[, high, size, dtype])	Return random integers from low (inclusive) to high (exclusive).
+# random_integers(low[, high, size])	Random integers of type np.int between low and high, inclusive.
+# random_sample([size])	Return random floats in the half-open interval [0.0, 1.0).
+# random([size])	Return random floats in the half-open interval [0.0, 1.0).
+# ranf([size])	Return random floats in the half-open interval [0.0, 1.0).
+# sample([size])	Return random floats in the half-open interval [0.0, 1.0).
+# choice(a[, size, replace, p])	Generates a random sample from a given 1-D array
+# bytes(length)	Return random bytes.
 
 
+# numpy.random.rand()　生成[0, 1)间随机数
+#
+# numpy.random.rand(d0, d1, …, dn)函数：
+# 生成一个(d0*d1* …* dn)维位于[0, 1)中随机样本
+a=np.random.rand(3,2)
+print(a)
+# [[0.97146136 0.37404033]
+#  [0.4807752  0.62259959]
+#  [0.229267   0.9255095 ]]
+
+
+# numpy.random.random()　
+# 生成随机浮点数
+#  Return random floats in the half-open interval [0.0, 1.0).
+a=np.random.random()
+b=np.random.random(5)
+c=np.random.random(size=(3,3))
+print(a)
+# 0.11193873235405427
+print(b)
+# [0.47720402 0.08839607 0.03787762 0.91095815 0.32032341]
+print(c)
+# [[0.35142528 0.36613813 0.92550255]
+#  [0.21280943 0.92517852 0.54451338]
+#  [0.17298798 0.81640273 0.46928169]]
+
+
+# numpy.random.randint()　产生随机整数
+#
+# API: randint(low, high=None, size=None, dtype=’l’)
+# numpy.random.randint()随机生一个整数int类型，可以指定这个整数的范围
+print (np.random.randint(8)) #6 不超过8
+print(np.random.randint(5, size=3)) #[0 0 0]
+print(np.random.randint(6, size=(3,2)))
+# [[1 0]
+#  [4 0]
+#  [5 0]]
+
+# numpy.random.normal() 　高斯分布随机数
+# API: normal(loc=0.0, scale=1.0, size=None)
+# loc：均值，scale：标准差，size：抽取样本的size
+
+print(np.random.normal(loc=0.0, scale=1, size=(2, 3)))
+#[[ 0.00528189 -0.20875828 -0.10024746]
+# [-0.0626219   1.45906232  0.51213271]]
+
+# numpy.random.randn()　标准正态分布随机数
+# numpy.random.randn(d0, d1, …, dn)函数：
+# 从标准正态分布中返回一个(d0*d1* …* dn)维样本值
+
+print(np.random.randn(4, 2))
+# [[ 0.28105068 -0.6257411 ]
+#  [ 0.79933175  1.27780089]
+#  [-1.01584908 -0.7761035 ]
+#  [-1.62885819  0.59633407]]
+
+
+# numpy.random.RandomState()　指定种子值
+#
+# numpy.random.RandomState()指定种子值（指定种子值是为了使同样的条件下每次产生的随机数一样，避免程序调试时由随机数不同而引起的问题）
+# 如不设置种子值时,np.random.randint(8)可能产生0-7内的任意整数，且每次产生的数字可能是任意一种．
+# 而设置种子值后,np.random.RandomState(0).randint(8)可能产生0-7内的任意整数，但种子值不变时每次运行程序产生的数字一样．
+
+n1 = np.random.RandomState(0).random_sample()
+n2 = np.random.RandomState(0).random_sample()
+n3=np.random.RandomState(1).random_sample()
+print(n1)#0.5488135039273248
+print(n2)#0.5488135039273248
+print(n3)#0.417022004702574 多次运行此执行文件，返回的值是一样的。
