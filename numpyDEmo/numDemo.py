@@ -322,3 +322,4 @@ n3=np.random.RandomState(1).random_sample()
 print(n1)#0.5488135039273248
 print(n2)#0.5488135039273248
 print(n3)#0.417022004702574 多次运行此执行文件，返回的值是一样的。
+
